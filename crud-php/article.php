@@ -68,7 +68,7 @@ if (isset($_POST['hapus'])) {
 
     <div class="row mb-3">
         <div class="col-md-6">
-            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalTambah">
+            <button type="button" class="btn text-white mb-2" style="background-color: #9370DB;" data-bs-toggle="modal" data-bs-target="#modalTambah">
                 <i class="bi bi-plus-lg"></i> Tambah Data
             </button>
         </div>

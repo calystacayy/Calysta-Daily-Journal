@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($row) {
         $_SESSION['username'] = $row['username'];
+        $_SESSION['user_id'] = $row['id']; // <--- TAMBAHKAN BARIS INI (PENTING!)
         header("location:admin.php");
     } else {
         header("location:login.php?error=1");
@@ -33,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login | My Daily Journal</title>
+    <title>Login | Calysta Daily Journal</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"/>
@@ -51,8 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0 20px 40px rgba(0,0,0,.08);
         }
 
-        .login-icon {
-            color: #2563eb;
+      .login-icon {
+            color: #9370DB; /* Ganti kode warnanya */
         }
 
         .login-title {
@@ -65,15 +66,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border-radius: 12px;
         }
 
-        .btn-login {
-            background: #2563eb;
+           .btn-login {
+            background: #9370DB; /* Ganti background tombol */
             border: none;
-            border-radius: 12px;
-            font-weight: 600;
+            /* ...sisanya biarin... */
         }
-
+        
         .btn-login:hover {
-            background: #1e40af;
+            background: #8A2BE2; /* Warna saat mouse nempel */
         }
 
         .error-text {

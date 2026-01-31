@@ -29,7 +29,7 @@ $currentPage = $_GET['page'] ?? 'dashboard';
     />
 
     <!-- ===== UI MASKULIN & CERAH ===== -->
-    <style>
+   <style>
         html, body {
             height: 100%;
         }
@@ -44,9 +44,10 @@ $currentPage = $_GET['page'] ?? 'dashboard';
             flex: 1;
         }
 
-        /* ===== NAVBAR (BIRU CERAH & MODERN) ===== */
+        /* ===== NAVBAR (LAVENDER) ===== */
         .navbar {
-            background: linear-gradient(90deg, #97682eff, #887547ff) !important;
+            /* Ganti warna emas jadi Lavender Gradasi */
+            background: linear-gradient(90deg, #9370DB, #8A2BE2) !important; 
             border-bottom: none;
         }
 
@@ -57,7 +58,7 @@ $currentPage = $_GET['page'] ?? 'dashboard';
         }
 
         .nav-link {
-            color: #e0e7ff !important;
+            color: #E6E6FA !important; /* Lavender muda banget buat teks */
             font-weight: 500;
             transition: all .2s ease;
         }
@@ -82,9 +83,10 @@ $currentPage = $_GET['page'] ?? 'dashboard';
             border-radius: 10px;
         }
 
-        /* ===== FOOTER (BIRU CERAH & CLEAN) ===== */
+        /* ===== FOOTER (LAVENDER) ===== */
         footer {
-            background: linear-gradient(90deg, #97682eff, #887547ff);
+            /* Ganti warna emas jadi Lavender Gradasi */
+            background: linear-gradient(90deg, #9370DB, #8A2BE2);
             border-top: none;
             color: #e5e7eb;
         }
@@ -95,18 +97,23 @@ $currentPage = $_GET['page'] ?? 'dashboard';
         }
 
         footer a:hover i {
-            color: #bec3e2ff !important; /* TETAP PUTIH */
+            color: #E6E6FA !important;
             transform: translateY(-4px);
         }
-
 
         footer .fw-semibold {
             color: #ffffffff;
         }
+        
         footer a {
             text-decoration: none !important;
         }
-
+        
+        /* Ganti Judul Halaman Dashboard jadi Ungu */
+        .lead {
+            color: #9370DB; 
+            border-color: #9370DB !important;
+        }
     </style>
 </head>
 
@@ -122,35 +129,26 @@ $currentPage = $_GET['page'] ?? 'dashboard';
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
-                <li class="nav-item">
-                    <a class="nav-link <?= ($currentPage === 'dashboard') ? 'active' : '' ?>"
-                       href="admin.php?page=dashboard">
-                        Dashboard
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link <?= ($currentPage === 'article') ? 'active' : '' ?>"
-                       href="admin.php?page=article">
-                        Article
-                    </a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       href="#"
-                       role="button"
-                       data-bs-toggle="dropdown">
-                        <?= htmlspecialchars($_SESSION['username']); ?>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </li>
-
-            </ul>
+           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-dark">
+    <li class="nav-item">
+        <a class="nav-link" href="admin.php?page=dashboard">Dashboard</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="admin.php?page=article">Article</a>
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link" href="admin.php?page=gallery">Gallery</a>
+    </li> 
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <?= $_SESSION['username']?>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="admin.php?page=profile">Profile</a></li>
+            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+        </ul>
+    </li> 
+</ul>
         </div>
     </div>
 </nav>
@@ -159,12 +157,13 @@ $currentPage = $_GET['page'] ?? 'dashboard';
 <section id="content" class="p-5">
     <div class="container">
         <?php
-        $allowedPages = ['dashboard', 'article'];
-
-        if (in_array($currentPage, $allowedPages, true) && file_exists($currentPage . ".php")) {
-            include $currentPage . ".php";
-        } else {
-            include "dashboard.php";
+        if(isset($_GET['page'])){
+            ?>
+            <h4 class="lead display-6 pb-2 border-bottom border-danger-subtle"><?= ucfirst($_GET['page'])?></h4>
+            <?php
+            include($_GET['page'].".php");
+        }else{
+            include("dashboard.php");
         }
         ?>
     </div>
@@ -173,19 +172,19 @@ $currentPage = $_GET['page'] ?? 'dashboard';
 <!-- ================= FOOTER ================= -->
 <footer class="text-center p-5">
     <div>
-        <a href="https://www.instagram.com/panduupratamaaa_?igsh=MTBvNmJraTlydDZycw%3D%3D&utm_source=qr">
+        <a href="https://www.instagram.com/calysstaa_?igsh=MTh2YzlzcnVkYmp1Yg==">
             <i class="bi bi-instagram h2 p-2"></i>
         </a>
-        <a href="https://www.tiktok.com/@masbearr">
+        <a href="https://www.tiktok.com/@beyyiii_?_r=1&_t=ZS-93WZBLd5oUX">
             <i class="bi bi-tiktok h2 p-2"></i>
         </a>
-        <a href="https://wa.me/+6282329422289">
+        <a href="https://wa.me/+6285951123571">
             <i class="bi bi-whatsapp h2 p-2"></i>
         </a>
     </div>
     <div class="fw-semibold text-dark">
         <p style="color: white;">
-    Devin Abiyyu Pandu Pratama © 2025
+     Calysta Cayla Putri Anggraini © 2025
     </p>
     </div>
 </footer>

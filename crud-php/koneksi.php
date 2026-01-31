@@ -12,13 +12,19 @@ if ($_SERVER['SERVER_NAME'] == 'localhost' || $_SERVER['SERVER_NAME'] == '127.0.
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $db = "webdailyjournal"; // Pastikan nama DB lokal benar
+    $db = "Calystawebdailyjournal"; 
 } else {
     // === KONEKSI HOSTING (InfinityFree) ===
-    $servername = "sql100.infinityfree.com";
-    $username = "if0_40866012";
-    $password = "vkoLDVddUT7w"; // Password hostingmu 
-    $db = "if0_40866012_webdailyjournal";
+    
+    // FIX: Hostname diganti jadi sql206 sesuai screenshot panelmu
+    $servername = "sql206.infinityfree.com"; 
+    
+    // Username & Password
+    $username = "if0_41037596";
+    $password = "B5ZUaEny78"; 
+    
+    // Nama Database
+    $db = "if0_41037596_calystadb";
 }
 
 $conn = new mysqli($servername, $username, $password, $db);
